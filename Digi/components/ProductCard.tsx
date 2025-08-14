@@ -1,4 +1,6 @@
 'use client'
+import type { Product } from '@/app/Digi API Component/digiAPI'
+
 interface ProductCardProps {
   title: string
   price: number

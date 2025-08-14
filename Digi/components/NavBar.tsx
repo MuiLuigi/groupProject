@@ -1,9 +1,11 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useCart } from '../Context/Cart'
 
 export default function NavBar() {
   const path = usePathname()
+  const { count } = useCart();
 
   const links = (paths: String) =>
     path === paths ? 'text-white-600 font-bold' : 'hover:text-blue-200 transition'
@@ -14,7 +16,7 @@ export default function NavBar() {
       <ul className="flex gap-4">
         <li><Link className={links('/')} href="/">Home</Link></li>
         <li><Link className={links('/Digi/products')} href="/Digi/products">Products</Link></li>
-        <li><Link className={links('/Digi/cart')} href="/Digi/cart">Cart</Link></li>
+        <li><Link className={links('/Digi/cart')} href="/Digi/cart">Cart{count ? ` (${count})` : ''}</Link></li>
         <li><Link className={links('/Digi/admin')} href="/Digi/admin">Admin</Link></li>
       </ul>
     </nav>
